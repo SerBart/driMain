@@ -1,0 +1,362 @@
+2025-07-16 10:49:18.439459+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(900)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(900)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-232]
+2025-07-16 10:49:36.354414+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(900)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(900)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-232]
+2025-07-16 10:49:38.183313+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(900)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(900)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-232]
+2025-07-16 10:49:40.016249+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(900)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(900)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-232]
+2025-07-16 10:49:54.621733+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(900)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(900)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-232]
+2025-07-16 10:49:57.416034+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(900)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(900)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-232]
+2025-07-16 10:50:06.371301+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(900)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(900)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-232]
+2025-07-16 10:50:44.439366+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(900)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(900)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-232]
+2025-07-16 12:56:24.459122+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(900)": "'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa... (814)"
+Value too long for column "OPIS CHARACTER VARYING(900)": "'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa... (814)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 12:57:48.688124+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(900)": "'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa... (814)"
+Value too long for column "OPIS CHARACTER VARYING(900)": "'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa... (814)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 12:58:12.458793+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(900)": "'9009009009009009009009009009009009009009009009009009009009009009009009009009009... (318)"
+Value too long for column "OPIS CHARACTER VARYING(900)": "'9009009009009009009009009009009009009009009009009009009009009009009009009009009... (318)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 13:02:33.938427+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(255)": "'9009009009009009009009009009009009009009009009009009009009009009009009009009009... (318)"
+Value too long for column "OPIS CHARACTER VARYING(255)": "'9009009009009009009009009009009009009009009009009009009009009009009009009009009... (318)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 13:15:41.544377+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(255)": "'9009009009009009009009009009009009009009009009009009009009009009009009009009009... (318)"
+Value too long for column "OPIS CHARACTER VARYING(255)": "'9009009009009009009009009009009009009009009009009009009009009009009009009009009... (318)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 13:16:32.099727+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 13:16:54.231223+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 13:17:02.233023+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 13:18:04.302897+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 13:18:06.817695+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 13:18:19.066773+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 13:20:48.045185+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 13:22:15.058940+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 13:26:26.020245+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 13:26:28.729121+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 13:26:54.278074+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 13:30:21.909787+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 13:31:44.711227+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"
+Value too long for column "OPIS CHARACTER VARYING(255)": "'""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor... (447)"; SQL statement:
+insert into raport (czas_do,czas_od,data_naprawy,maszyna_id,opis,osoba_id,status,typ_naprawy,id) values (?,?,?,?,?,?,?,?,default) [22001-224]
+2025-07-16 13:33:27.235609+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 13:34:35.843476+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 13:34:49.458104+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 13:47:36.900634+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 13:49:26.690285+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 13:49:30.801604+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 13:54:06.147515+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 13:58:53.858867+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 13:59:01.612971+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 13:59:08.428202+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 14:01:41.764625+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 14:01:44.764793+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 14:03:32.916628+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 14:03:38.350658+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 14:03:45.088949+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 14:04:13.465305+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 14:06:02.970431+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 14:10:51.100076+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 14:10:54.492626+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 14:10:56.671344+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 14:11:22.643925+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 14:12:17.668066+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 14:12:33.963868+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 14:13:01.466437+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 14:13:26.051113+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 15:25:02.379230+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 15:25:07.231348+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 15:25:15.668342+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 15:27:37.827071+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 15:27:54.868145+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 15:27:59.372527+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 15:28:30.542540+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:11:01.053464+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:11:04.439996+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:11:07.350960+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:11:27.004697+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:14:03.743306+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:14:06.587726+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:14:09.023712+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:14:29.216477+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:17:49.082332+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:19:50.429617+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:19:53.029093+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:19:54.831914+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:20:07.008743+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:22:11.537700+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:22:14.446686+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:22:17.651262+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:22:30.773744+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:29:30.617600+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:29:32.968293+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:29:34.494918+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-16 16:29:52.814513+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 08:33:34.717839+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 08:33:39.263182+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 08:33:45.256004+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 08:34:13.709502+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:19:53.204495+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:19:56.069155+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:19:57.794427+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:20:10.869347+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:22:35.539002+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:22:39.792551+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:22:41.204807+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:22:53.273530+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:25:33.493971+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:25:36.677884+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:25:40.244834+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:25:51.411544+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:43:36.416501+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:43:38.763035+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:43:40.364494+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:43:53.927163+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:45:39.307741+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:45:42.640059+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:45:44.164569+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:45:55.708016+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:49:05.479316+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:49:07.696182+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:49:09.107698+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:49:19.252531+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 10:51:02.041554+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 13:12:47.106675+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 13:12:49.563650+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 13:12:52.186012+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]
+2025-07-17 13:13:05.611705+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Obiekt jest zamknięty
+The object is already closed [90007-224]

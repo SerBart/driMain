@@ -1,0 +1,53 @@
+body {
+    background: linear-gradient(to bottom, #1c1c1c, #333); /* Ciemny gradient przemysłowy */
+    color: #ddd; /* Jasny tekst */
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    background-color: #222; /* Ciemne tło kontenera */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h1, h2 {
+    color: #fff; /* Biały nagłówek */
+}
+
+.table-dark {
+    --bs-table-bg: #333; /* Ciemna tabela */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Niebieski dla akcji */
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Szary dla drugorzędnych */
+}
+
+.btn-warning {
+    background-color: #ffc107;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+/* Nawiązanie do utrzymania ruchu: ikony */
+.logo {
+    font-size: 24px;
+    color: #fff;
+}
+
+.logo i {
+    margin-right: 10px;
+}
+
+/* Tło z motywem maszyn (opcjonalnie dodaj obraz) */
+body {
+    background-image: url('https://example.com/industrial-background.jpg'); /* Zamień na własny URL lub lokalny plik */
+    background-size: cover;
+    background-attachment: fixed;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>driMain - Panel Admina</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="container">
+    <div class="mb-3">
+        <a href="/" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Powrót do listy raportów</a>
+    </div>
+    <!-- Reszta treści panelu admina -->
+    <h1 class="logo"><i class="fas fa-tools"></i> Panel Admina - driMain</h1>
+    <a href="/logout" class="btn btn-danger mb-3"><i class="fas fa-sign-out-alt"></i> Wyloguj</a>
+
+
+    <h2>Dodaj Dział</h2>
+    <form method="post" action="/admin/dodaj-dzial" class="mb-4">
+        <div class="mb-3">
+            <label class="form-label">Nazwa Działu</label>
+            <input type="text" name="nazwa" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Dodaj Dział</button>
+    </form>
+
+    <h2><i class="fas fa-robot"></i> Dodaj Maszynę</h2>
+    <form method="post" action="/admin/dodaj-maszyna" class="mb-4">
+        <div class="mb-3">
+            <label class="form-label">Nazwa Maszyny</label>
+            <input type="text" name="nazwa" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Dział</label>
+            <select name="dzialId" class="form-select" required>
+                <option value="">Wybierz dział</option>
+                <option th:each="d : ${dzialy}" th:value="${d.id}" th:text="${d.nazwa}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Dodaj</button>
+    </form>
+
+    <h2><i class="fas fa-user"></i> Dodaj Osobę</h2>
+    <form method="post" action="/admin/dodaj-osoba" class="mb-4">
+        <div class="mb-3">
+            <label class="form-label">Imię i Nazwisko</label>
+            <input type="text" name="imieNazwisko" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Dodaj</button>
+    </form>
+    <h2>Istniejące Działy</h2>
+    <ul class="list-group mb-4">
+        <li th:each="d : ${dzialy}" class="list-group-item list-group-item-dark" th:text="${d.nazwa}"></li>
+    </ul>
+
+    <h2><i class="fas fa-list"></i> Istniejące Maszyny</h2>
+    <ul class="list-group mb-4">
+        <li th:each="maszyna : ${maszyny}" class="list-group-item list-group-item-dark"
+            th:text="${maszyna.nazwa} + ' (' + ${maszyna.dzial != null ? maszyna.dzial.nazwa : 'Brak działu'} + ')'"></li>
+    </ul>
+
+    <h2><i class="fas fa-users"></i> Istniejące Osoby</h2>
+    <ul class="list-group">
+        <li th:each="osoba : ${osoby}" class="list-group-item list-group-item-dark" th:text="${osoba.imieNazwisko}"></li>
+    </ul>
+</div>
+</body>
+</html>
