@@ -47,17 +47,11 @@
 </div>
 
 <!-- Fragment dla edycji (editForm) – podobny, z ukrytym ID -->
-<div th:fragment="editForm">
+<!-- Fragment dla dodawania (addForm) -->
+<div th:fragment="addForm">
+    <p>Test: To powinien być widoczny formularz!</p>  <!-- Dodaj to na początek, by sprawdzić -->
     <form th:action="@{/raport/zapisz}" method="post" onsubmit="return validateForm(this)">
-        <input type="hidden" name="id" th:value="${raport.id}" />
-        <!-- Pola jak powyżej, z th:value dla edycji, np. -->
-        <div class="mb-3">
-            <label for="maszynaId" class="form-label">Maszyna</label>
-            <select class="form-select bg-dark text-light" id="maszynaId" name="maszynaId" required>
-                <option th:each="maszyna : ${maszyny}" th:value="${maszyna.id}" th:text="${maszyna.nazwa}" th:selected="${maszyna.id == raport.maszyna.id}"></option>
-            </select>
-        </div>
-        <!-- ... reszta pól z th:value="${raport.typNaprawy}" itp. ... -->
-        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Zapisz zmiany</button>
+        <!-- Reszta pól jak masz... -->
     </form>
 </div>
+
