@@ -18,6 +18,9 @@ h1, h2 {
 .table-dark {
     --bs-table-bg: #333; /* Ciemna tabela */
 }
+.d-flex justify-content-between {
+    align-items: center; /* Wyrównaj pionowo */
+}
 
 .btn-primary {
     background-color: #007bff; /* Niebieski dla akcji */

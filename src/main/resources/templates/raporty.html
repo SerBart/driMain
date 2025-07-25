@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>driMain - Raporty (Wypasiona Wersja)</title>
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <!-- Font Awesome (ikony) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap5.min.css" />
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
+    <!-- Twój CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <style>
+        body { background-color: #212529; color: #f8f9fa; }
+        .table-dark th { background-color: #343a40; }
+        .modal-content { background-color: #343a40; color: #f8f9fa; }
+        .fade-in { animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="fade-in">
+
+<div class="container py-4">
+    <h1 class="mb-4"><i class="fas fa-file-alt"></i> driMain - Raporty (Wypasiona Wersja)</h1>
+
+    <!-- Przycisk do modala dodawania -->
+    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addModal" onclick="loadAddForm()"><i class="fas fa-plus"></i> Dodaj nowy raport</button>
+    <a href="/dashboard" class="btn btn-secondary mb-3"><i class="fas fa-arrow-left"></i> Powrót do dashboardu</a>
+
+    <!-- Wypasiona tabela z raportami -->
+    <div class="card bg-secondary text-light mb-5">
+        <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-list"></i> Lista wszystkich raportów</h5>
+            <table id="raportyTable" class="table table-dark table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Maszyna</th>
+                    <th>Typ Naprawy</th>
+                    <th>Opis (skrót)</th>
+                    <th>Osoba</th>
+                    <th>Status</th>
+                    <th>Data Naprawy</th>
+                    <th>Czas Od-Do</th>
+                    <th>Akcje</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="raport : ${raporty}">
+                    <td th:text="${raport.maszyna.nazwa}"></td>
+                    <td th:text="${raport.typNaprawy}"></td>
+                    <td th:text="${#strings.abbreviate(raport.opis, 50)}" title="${raport.opis}"></td> <!-- Tooltip z pełnym opisem -->
+                    <td th:text="${raport.osoba.imieNazwisko}"></td>
+                    <td th:text="${raport.status}"></td>
+                    <td th:text="${#temporals.format(raport.dataNaprawy, 'yyyy-MM-dd')}"></td>
+                    <td th:text="${#temporals.format(raport.czasOd, 'HH:mm')} + ' - ' + ${#temporals.format(raport.czasDo, 'HH:mm')}"></td>
+                    <td>
+                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" th:onclick="'loadEditForm(' + ${raport.id} + ')'"><i class="fas fa-edit"></i> Edytuj</button>
+                        <button class="btn btn-sm btn-danger" th:onclick="'confirmDelete(' + ${raport.id} + ')'"><i class="fas fa-trash"></i> Usuń</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div th:if="${#lists.isEmpty(raporty)}" class="alert alert-info mt-3">Brak raportów do wyświetlenia.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal dodawania raportu -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel"><i class="fas fa-plus"></i> Dodaj nowy raport</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="addFormContent">
+                <!-- Formularz ładowany dynamicznie -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal edycji raportu -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel"><i class="fas fa-edit"></i> Edytuj raport</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="editFormContent">
+                <!-- Formularz ładowany dynamicznie -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.bootstrap5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+<script>
+    // Inicjalizacja DataTables
+    $(document).ready(function() {
+        $('#raportyTable').DataTable({
+            "paging": true,
+            "searching": true,
+            "ordering": true,
+            "dom": 'Bfrtip',
+            "buttons": ['copy', 'csv', 'excel', 'pdf', 'print'],
+            "language": { "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/pl.json" }
+        });
+    });
+
+    // Ładowanie formularza dodawania (fetch do /raport/nowy?fragment=true)
+    function loadAddForm() {
+        fetch('/raport/nowy?fragment=true')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Błąd odpowiedzi: ' + response.status);
+                }
+                return response.text();
+            })
+            .then(html => {
+                document.getElementById('addFormContent').innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Błąd fetch:', error);
+                Swal.fire('Błąd', 'Nie udało się załadować formularza. Sprawdź połączenie lub serwer.', 'error'); // Opcjonalnie alert
+                document.getElementById('addFormContent').innerHTML = '<p>Błąd ładowania formularza. Spróbuj ponownie.</p>';
+            });
+    }
+    function loadAddForm() {
+        fetch('/raport/nowy?fragment=true')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Błąd odpowiedzi: ' + response.status);
+                }
+                return response.text();
+            })
+            .then(html => {
+                document.getElementById('addFormContent').innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Błąd fetch:', error);
+                Swal.fire('Błąd', 'Nie udało się załadować formularza. Sprawdź połączenie lub serwer.', 'error'); // Opcjonalnie alert
+                document.getElementById('addFormContent').innerHTML = '<p>Błąd ładowania formularza. Spróbuj ponownie.</p>';
+            });
+    }
+
+    // Ładowanie formularza edycji
+    function loadEditForm(id) {
+        fetch('/raport/edytuj/' + id + '?fragment=true')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('editFormContent').innerHTML = html;
+            });
+    }
+
+    // Potwierdzenie usunięcia
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Czy na pewno chcesz usunąć?',
+            text: "Tej akcji nie można cofnąć!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Tak, usuń!',
+            cancelButtonText: 'Anuluj'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const form = document.createElement('form');
+                form.method = 'post';
+                form.action = '/raport/delete';
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'id';
+                input.value = id;
+                form.appendChild(input);
+                document.body.appendChild(form);
+                form.submit();
+            }
+        });
+    }
+
+    // Walidacja formularza (przykład dla modali)
+    function validateForm(form) {
+        if (form.opis.value.length < 10) {
+            Swal.fire('Błąd', 'Opis musi mieć co najmniej 10 znaków', 'error');
+            return false;
+        }
+        return true;
+    }
+</script>
+
+</body>
+</html>

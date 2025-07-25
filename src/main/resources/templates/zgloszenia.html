@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>driMain - Zgłoszenia (Wypasiona Wersja)</title>
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <!-- Font Awesome (ikony) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- DataTables CSS dla wypasionej tabeli -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap5.min.css" />
+    <!-- SweetAlert2 dla ładnych potwierdzeń -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
+    <!-- Twój własny CSS (opcjonalnie) -->
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <style>
+        body { background-color: #212529; color: #f8f9fa; }
+        .table-dark th { background-color: #343a40; }
+        .modal-content { background-color: #343a40; color: #f8f9fa; }
+        .fade-in { animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="fade-in">
+
+<div class="container py-4">
+    <h1 class="mb-4"><i class="fas fa-exclamation-triangle"></i> driMain - Zgłoszenia (Wypasiona Wersja)</h1>
+
+    <!-- Przycisk do otwierania modala dodawania -->
+    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addModal"><i class="fas fa-plus"></i> Dodaj nowe zgłoszenie</button>
+    <a href="/dashboard" class="btn btn-secondary mb-3"><i class="fas fa-arrow-left"></i> Powrót do dashboardu</a>
+
+    <!-- Wypasiona tabela z zgłoszeniami (DataTables: wyszukiwanie, sortowanie, paginacja, export) -->
+    <div class="card bg-secondary text-light mb-5">
+        <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-list"></i> Lista wszystkich zgłoszeń</h5>
+            <table id="zgloszeniaTable" class="table table-dark table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Imię i Nazwisko</th>
+                    <th>Typ</th>
+                    <th>Data i Godzina</th>
+                    <th>Opis (skrót)</th>
+                    <th>Akcje</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="zgloszenie : ${zgloszenia}">
+                    <td th:text="${zgloszenie.imie} + ' ' + ${zgloszenie.nazwisko}"></td>
+                    <td th:text="${zgloszenie.typ}"></td>
+                    <td th:text="${#temporals.format(zgloszenie.dataGodzina, 'yyyy-MM-dd HH:mm')}"></td>
+                    <td th:text="${#strings.abbreviate(zgloszenie.opis, 50)}"></td>
+                    <td>
+                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" th:onclick="'loadEditForm(' + ${zgloszenie.id} + ')'"><i class="fas fa-edit"></i> Edytuj</button>
+                        <button class="btn btn-sm btn-danger" th:onclick="'confirmDelete(' + ${zgloszenie.id} + ')'"><i class="fas fa-trash"></i> Usuń</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div th:if="${#lists.isEmpty(zgloszenia)}" class="alert alert-info mt-3">Brak zgłoszeń do wyświetlenia.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal dodawania zgłoszenia -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel"><i class="fas fa-plus"></i> Dodaj nowe zgłoszenie</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/zgloszenia/add}" method="post" onsubmit="return validateForm(this)">
+                    <div class="mb-3">
+                        <label for="imie" class="form-label">Imię zgłaszającego</label>
+                        <input type="text" class="form-control bg-dark text-light" id="imie" name="imie" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="nazwisko" class="form-label">Nazwisko zgłaszającego</label>
+                        <input type="text" class="form-control bg-dark text-light" id="nazwisko" name="nazwisko" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="typ" class="form-label">Typ zgłoszenia</label>
+                        <select class="form-select bg-dark text-light" id="typ" name="typ" required>
+                            <option value="awaria">Awaria</option>
+                            <option value="usterka">Usterka</option>
+                            <option value="przebudowa">Przebudowa</option>
+                            <option value="inne">Inne</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dataGodzina" class="form-label">Data i godzina zgłoszenia</label>
+                        <input type="datetime-local" class="form-control bg-dark text-light" id="dataGodzina" name="dataGodzina" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="opis" class="form-label">Opis</label>
+                        <textarea class="form-control bg-dark text-light" id="opis" name="opis" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Zgłoś</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal edycji zgłoszenia (ładuje dynamicznie via AJAX lub Thymeleaf fragment) -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel"><i class="fas fa-edit"></i> Edytuj zgłoszenie</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="editFormContent">
+                <!-- Formularz ładowany dynamicznie via JS lub Thymeleaf -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript: Bootstrap, DataTables, SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.bootstrap5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+<script>
+    // Inicjalizacja DataTables (wypasiona tabela z wyszukiwaniem, sortowaniem, exportem)
+    $(document).ready(function() {
+        $('#zgloszeniaTable').DataTable({
+            "paging": true,
+            "searching": true,
+            "ordering": true,
+            "dom": 'Bfrtip', // Przyciski exportu
+            "buttons": ['copy', 'csv', 'excel', 'pdf', 'print'],
+            "language": { "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/pl.json" } // Polski język (opcjonalnie)
+        });
+    });
+
+    // Funkcja walidacji formularza (klient-side)
+    function validateForm(form) {
+        // Dodaj custom walidację, np. sprawdzanie długości opisu
+        if (form.opis.value.length < 10) {
+            Swal.fire('Błąd', 'Opis musi mieć co najmniej 10 znaków', 'error');
+            return false;
+        }
+        return true;
+    }
+
+    // Funkcja ładowania formularza edycji (AJAX lub symulacja – dostosuj do Thymeleaf jeśli potrzeba)
+    function loadEditForm(id) {
+        // Przykładowo ładuj via AJAX (zakładam endpoint /zgloszenia/edit/{id} zwraca HTML fragment)
+        fetch('/zgloszenia/edit/' + id)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('editFormContent').innerHTML = html;
+            })
+            .catch(error => console.error('Błąd ładowania formularza edycji:', error));
+    }
+
+    // Funkcja potwierdzenia usunięcia (SweetAlert)
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Czy na pewno chcesz usunąć?',
+            text: "Tej akcji nie można cofnąć!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Tak, usuń!',
+            cancelButtonText: 'Anuluj'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Wyślij POST do usunięcia
+                const form = document.createElement('form');
+                form.method = 'post';
+                form.action = '/zgloszenia/delete';
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'id';
+                input.value = id;
+                form.appendChild(input);
+                document.body.appendChild(form);
+                form.submit();
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

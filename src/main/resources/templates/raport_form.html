@@ -1,84 +1,63 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>driMain - Raport</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-</head>
-<body>
-<div class="container">
-    <h1 class="logo"><i class="fas fa-wrench"></i> <span th:text="${raport.id} ? 'Edytuj Raport' : 'Nowy Raport'"></span></h1>
-    <form th:action="@{/raport/zapisz}" method="post">
-        <input type="hidden" name="id" th:value="${raport.id}" th:if="${raport.id}"/>
-
+<!-- Fragment dla dodawania (addForm) -->
+<div th:fragment="addForm">
+    <form th:action="@{/raport/zapisz}" method="post" onsubmit="return validateForm(this)">
+        <!-- Pola formularza – dostosuj do Twojego modelu -->
         <div class="mb-3">
-            <label class="form-label"><i class="fas fa-sitemap"></i> Dział</label>
-            <select name="dzialId" class="form-select" required>
-                <option th:each="d : ${dzialy}" th:value="${d.id}" th:text="${d.nazwa}"
-                        th:selected="${raport.maszyna != null && raport.maszyna.dzial != null && raport.maszyna.dzial.id == d.id}">
-                </option>
+            <label for="maszynaId" class="form-label">Maszyna</label>
+            <select class="form-select bg-dark text-light" id="maszynaId" name="maszynaId" required>
+                <option th:each="maszyna : ${maszyny}" th:value="${maszyna.id}" th:text="${maszyna.nazwa}"></option>
             </select>
         </div>
-
-
         <div class="mb-3">
-            <label class="form-label"><i class="fas fa-robot"></i> Maszyna</label>
-            <select name="maszynaId" class="form-select" required>
-                <option th:each="m : ${maszyny}" th:value="${m.id}" th:text="${m.nazwa} + ' (' + ${m.dzial} + ')'" th:selected="${raport.maszyna != null and raport.maszyna.id == m.id}"></option>
+            <label for="typNaprawy" class="form-label">Typ naprawy</label>
+            <input type="text" class="form-control bg-dark text-light" id="typNaprawy" name="typNaprawy" required />
+        </div>
+        <div class="mb-3">
+            <label for="opis" class="form-label">Opis</label>
+            <textarea class="form-control bg-dark text-light" id="opis" name="opis" rows="4" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="osobaId" class="form-label">Osoba</label>
+            <select class="form-select bg-dark text-light" id="osobaId" name="osobaId" required>
+                <option th:each="osoba : ${osoby}" th:value="${osoba.id}" th:text="${osoba.imieNazwisko}"></option>
             </select>
         </div>
-
         <div class="mb-3">
-            <label class="form-label"><i class="fas fa-exclamation-triangle"></i> Typ Naprawy</label>
-            <select name="typNaprawy" class="form-select" required>
-                <option value="Awaria" th:selected="${raport.typNaprawy == 'Awaria'}">Awaria</option>
-                <option value="Usterka" th:selected="${raport.typNaprawy == 'Usterka'}">Usterka</option>
-                <option value="Przezbrojenie" th:selected="${raport.typNaprawy == 'Przezbrojenie'}">Przezbrojenie</option>
-                <option value="Konserwacja" th:selected="${raport.typNaprawy == 'Konserwacja'}">Konserwacja</option>
-                <option value="Regulacja" th:selected="${raport.typNaprawy == 'Regulacja'}">Regulacja</option>
+            <label for="status" class="form-label">Status</label>
+            <select class="form-select bg-dark text-light" id="status" name="status" required>
+                <option value="otwarty">Otwarty</option>
+                <option value="w trakcie">W trakcie</option>
+                <option value="zamknięty">Zamknięty</option>
             </select>
         </div>
-
         <div class="mb-3">
-            <label class="form-label"><i class="fas fa-comment"></i> Opis Zdarzenia</label>
-            <textarea name="opis" class="form-control" rows="3" required th:text="${raport.opis}"></textarea>
+            <label for="dataNaprawy" class="form-label">Data naprawy</label>
+            <input type="date" class="form-control bg-dark text-light" id="dataNaprawy" name="dataNaprawy" required />
         </div>
-
         <div class="mb-3">
-            <label class="form-label"><i class="fas fa-user"></i> Kto Naprawił</label>
-            <select name="osobaId" class="form-select" required>
-                <option th:each="o : ${osoby}" th:value="${o.id}" th:text="${o.imieNazwisko}" th:selected="${raport.osoba != null and raport.osoba.id == o.id}"></option>
-            </select>
+            <label for="czasOd" class="form-label">Czas od</label>
+            <input type="time" class="form-control bg-dark text-light" id="czasOd" name="czasOd" required />
         </div>
-
         <div class="mb-3">
-            <label class="form-label"><i class="fas fa-tasks"></i> Status</label>
-            <select name="status" class="form-select" required>
-                <option value="TODO" th:selected="${raport.status == 'TODO'}">TODO</option>
-                <option value="Gotowe" th:selected="${raport.status == 'Gotowe'}">Gotowe</option>
-                <option value="W trakcie" th:selected="${raport.status == 'W trakcie'}">W trakcie</option>
-            </select>
+            <label for="czasDo" class="form-label">Czas do</label>
+            <input type="time" class="form-control bg-dark text-light" id="czasDo" name="czasDo" required />
         </div>
-
-        <div class="mb-3">
-            <label class="form-label"><i class="fas fa-calendar-alt"></i> Data Naprawy</label>
-            <input type="date" name="dataNaprawy" class="form-control" required th:value="${raport.dataNaprawy}"/>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label"><i class="fas fa-clock"></i> Czas Od</label>
-            <input type="time" name="czasOd" class="form-control" required th:value="${raport.czasOd}"/>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label"><i class="fas fa-clock"></i> Czas Do</label>
-            <input type="time" name="czasDo" class="form-control" required th:value="${raport.czasDo}"/>
-        </div>
-
         <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Zapisz</button>
-        <a href="/" class="btn btn-secondary"><i class="fas fa-times"></i> Anuluj</a>
     </form>
 </div>
-</body>
-</html>
+
+<!-- Fragment dla edycji (editForm) – podobny, z ukrytym ID -->
+<div th:fragment="editForm">
+    <form th:action="@{/raport/zapisz}" method="post" onsubmit="return validateForm(this)">
+        <input type="hidden" name="id" th:value="${raport.id}" />
+        <!-- Pola jak powyżej, z th:value dla edycji, np. -->
+        <div class="mb-3">
+            <label for="maszynaId" class="form-label">Maszyna</label>
+            <select class="form-select bg-dark text-light" id="maszynaId" name="maszynaId" required>
+                <option th:each="maszyna : ${maszyny}" th:value="${maszyna.id}" th:text="${maszyna.nazwa}" th:selected="${maszyna.id == raport.maszyna.id}"></option>
+            </select>
+        </div>
+        <!-- ... reszta pól z th:value="${raport.typNaprawy}" itp. ... -->
+        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Zapisz zmiany</button>
+    </form>
+</div>
