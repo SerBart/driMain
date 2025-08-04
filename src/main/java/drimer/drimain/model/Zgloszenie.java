@@ -1,67 +1,54 @@
 package drimer.drimain.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import lombok.Data;  // Lombok: Automatyczne gettery/settery – zgasi czerwone!
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+import java.time.LocalDateTime;  // Zmienione na LocalDateTime dla dataGodzina
 
 @Entity
+@Table(name = "zgloszenie")
+@Data  // To generuje wszystkie settery (setImie, setNazwisko itd.)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Zgloszenie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "imie")
     private String imie;
+
+    @Column(name = "nazwisko")
     private String nazwisko;
-    private String typ; // e.g. "awaria", "usterka", etc.
-    private LocalDateTime dataGodzina;
+
+    @Column(name = "typ")
+    private String typ;
+
+    @Column(name = "data_godzina")
+    private LocalDateTime dataGodzina;  // Zmienione na LocalDateTime dla pełnej daty + czasu
+
+    @Column(name = "opis")
     private String opis;
 
-    // Getters and setters
-    public Long getId() {
-        return id;
-    }
+    // Inne pola z Twojego repo (np. relacje) – dodaj jeśli potrzeba
+    @ManyToOne
+    @JoinColumn(name = "maszyna_id")
+    private Maszyna maszyna;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "osoba_id")
+    private Osoba osoba;
 
-    public String getImie() {
-        return imie;
-    }
+    @Column(name = "status")
+    private String status;
 
-    public void setImie(String imie) {
-        this.imie = imie;
-    }
-
-    public String getNazwisko() {
-        return nazwisko;
-    }
-
-    public void setNazwisko(String nazwisko) {
-        this.nazwisko = nazwisko;
-    }
-
-    public String getTyp() {
-        return typ;
-    }
-
-    public void setTyp(String typ) {
-        this.typ = typ;
-    }
-
-    public LocalDateTime getDataGodzina() {
-        return dataGodzina;
-    }
-
-    public void setDataGodzina(LocalDateTime dataGodzina) {
-        this.dataGodzina = dataGodzina;
-    }
-
-    public String getOpis() {
-        return opis;
-    }
-
-    public void setOpis(String opis) {
-        this.opis = opis;
+    // Opcjonalna walidacja (wywołasz w kontrolerze)
+    public void validate() {
+        if (dataGodzina == null) {
+            throw new IllegalArgumentException("Data i godzina muszą być podane");
+        }
     }
 }

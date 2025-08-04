@@ -32,8 +32,6 @@ public class RaportController {
     @Autowired
     private RaportRepository raportRepository;
 
-    @Autowired
-    private ZgloszenieRepository zgloszenieRepository;
 
     // Endpoint do usuwania
     @GetMapping("/raport/usun/{id}")
@@ -43,27 +41,24 @@ public class RaportController {
     }
     // Nowy: Lista wszystkich raportów (GET)
     @GetMapping("/raporty")
-    public String raporty(Model model) {
-        List<Raport> raporty = raportRepository.findAll();
-        model.addAttribute("raporty", raporty);
-        model.addAttribute("dzialy", dzialRepository.findAll()); // Dla formularza (jeśli potrzeba)
-        model.addAttribute("maszyny", maszynaRepository.findAll());
-        model.addAttribute("osoby", osobaRepository.findAll());
-        return "raporty"; // Nazwa nowego template'a
+    public String raporty() {
+        return "raporty"; // Tylko to – bez ifów na sesję/uprawnienia
     }
 
     // Istniejący: Nowy raport (GET) – dostosowany do modala (zwraca fragment jeśli param 'fragment')
     @GetMapping("/raport/nowy")
     public String nowyRaportForm(Model model, @RequestParam(value = "fragment", required = false) boolean fragment) {
-        model.addAttribute("raport", new Raport());
-        model.addAttribute("dzialy", dzialRepository.findAll());
-        model.addAttribute("maszyny", maszynaRepository.findAll());
-        model.addAttribute("osoby", osobaRepository.findAll());
+        model.addAttribute("raport", new Raport());  // Nowy pusty raport
+        model.addAttribute("maszyny", maszynaRepository.findAll());  // Lista maszyn
+        model.addAttribute("osoby", osobaRepository.findAll());      // Lista osób
+        // Dodaj debug: Sprawdź, czy listy nie są puste
+        System.out.println("Maszyny: " + maszynaRepository.findAll().size());  // Wypisze w konsoli serwera
         if (fragment) {
-            return "raporty :: addFormFragment"; // Zwróć fragment dla modala
+            return "raport-form :: addForm";  // Upewnij się, że plik to raport-form.html i fragment "addForm"
         }
-        return "raport_form"; // Oryginalny template, jeśli nie modal
+        return "raport-form";  // Jeśli nie fragment, pełna strona (dla testu)
     }
+
 
     // Istniejący: Edycja raportu (GET) – dostosowany do modala
     @GetMapping("/raport/edytuj/{id}")
@@ -76,7 +71,7 @@ public class RaportController {
         if (fragment) {
             return "raporty :: editForm"; // Zwróć fragment dla modala
         }
-        return "raport_form";
+        return "raport-form";
     }
 
     // Istniejący: Zapisz raport (POST) – bez zmian
