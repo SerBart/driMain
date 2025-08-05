@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <title>Logowanie - Drimer App</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts dla logo -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <style>
         body {
-            background: linear-gradient(135deg, #0f0c29, #302b63); /* Granatowy gradient */
+            background: linear-gradient(135deg, #0f0c29, #302b63);
             height: 100vh;
             display: flex;
             align-items: center;
@@ -35,18 +33,16 @@
         }
         .logo {
             text-align: center;
-            font-family: 'Orbitron', sans-serif; /* Futurystyczny font dla logo */
-            font-size: 28px;
-            background: linear-gradient(135deg, #667eea, #ffffff); /* Gradient w logo */
-            -webkit-background-clip: text;
-            color: transparent;
             margin-bottom: 20px;
+        }
+        .logo img {
+            height: 50px;
+            margin-bottom: 8px;
         }
         .logo small {
             font-size: 14px;
             color: #333;
         }
-        /* Reszta stylów jak wcześniej */
         .login-title { color: #333; }
         .form-control { border-radius: 10px; padding: 15px; margin-bottom: 20px; }
         .btn-primary { background: #302b63; border: none; transition: background 0.3s; }
@@ -59,9 +55,10 @@
 </head>
 <body>
 <div class="login-container">
-    <!-- Logo firmy -->
+    <!-- Logo firmy zamiast napisu -->
     <div class="logo">
-        Drimer Sp. z o.o.
+        <img src="/img/logo.png" alt="Drimer Sp. z o.o.">
+        <br>
         <small>Toruń</small>
     </div>
 
@@ -89,6 +86,6 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

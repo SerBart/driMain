@@ -12,15 +12,12 @@
     <!-- Custom CSS -->
     <style>
         body {
-            background: linear-gradient(135deg, #0f0c29, #302b63); /* Granatowy gradient */
+            background: linear-gradient(135deg, #0f0c29, #302b63);
             color: #fff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
         }
-        .navbar {
-            background: rgba(0, 0, 0, 0.5); /* Półprzezroczysty granat */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
+
         .logo {
             font-family: 'Orbitron', sans-serif;
             font-size: 24px;
@@ -59,39 +56,11 @@
     </style>
 </head>
 <body>
-<!-- Navbar z logo i nawigacją -->
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand logo" href="/dashboard">
-            Drimer Sp. z o.o.
-            <small>Toruń</small>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/dashboard"><i class="fas fa-home me-1"></i> Dashboard</a>
-                </li>
-                <!-- Warunkowe linki na podstawie roli (używa Thymeleaf + Security) -->
-                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-                    <a class="nav-link" href="/raporty"><i class="fas fa-chart-bar me-1"></i> Raporty</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/zgloszenia"><i class="fas fa-file-alt me-1"></i> Zgłoszenia</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt me-1"></i> Wyloguj</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<!-- Wstaw fragment navbar na początku body -->
+<div th:replace="navbar :: navbar"></div>
 
 <!-- Główna zawartość dashboard -->
 <div class="container mt-5">
-    <!-- Powitanie użytkownika (bezpieczna obsługa null) -->
     <div class="welcome-message" th:if="${#authentication != null}">
         Witaj, <span th:text="${#authentication?.name ?: 'Użytkowniku'}">Użytkowniku</span>! <i class="fas fa-user-circle"></i>
     </div>
@@ -100,7 +69,6 @@
     </div>
 
     <div class="row justify-content-center">
-        <!-- Karta Raporty (widoczna tylko dla ADMIN) -->
         <div class="col-md-6" sec:authorize="hasRole('ADMIN')">
             <div class="card text-center">
                 <div class="card-body">
@@ -110,8 +78,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Karta Zgłoszenia (widoczna tylko dla USER) -->
         <div class="col-md-6">
             <div class="card text-center">
                 <div class="card-body">
@@ -121,6 +87,29 @@
                 </div>
             </div>
         </div>
+
+        <!-- NOWE KARTY widoczne tylko dla admina lub użytkownika "magazyn" -->
+        <div class="col-md-6"
+             th:if="${#authentication != null and (#authentication.name == 'magazyn' or #authorization.expression('hasRole(''ADMIN'')'))}">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-calendar-alt fa-2x mb-3" style="color: #302b63;"></i> Harmonogramy</h5>
+                    <p class="card-text">Przeglądaj harmonogramy prac i przeglądów.</p>
+                    <a href="/harmonogramy" class="btn btn-primary">Przejdź</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6"
+             th:if="${#authentication != null and (#authentication.name == 'magazyn' or #authorization.expression('hasRole(''ADMIN'')'))}">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-boxes fa-2x mb-3" style="color: #302b63;"></i> Magazyn części</h5>
+                    <p class="card-text">Zarządzaj częściami zamiennymi i stanem magazynu.</p>
+                    <a href="/magazyn" class="btn btn-primary">Przejdź</a>
+                </div>
+            </div>
+        </div>
+        <!-- KONIEC NOWYCH KART -->
     </div>
 </div>
 
