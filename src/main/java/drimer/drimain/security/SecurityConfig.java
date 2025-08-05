@@ -38,7 +38,8 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/", "/index", "/home").permitAll() // Zezwól na dostęp do głównej ścieżki
-                        .requestMatchers("/h2-console/**", "/login", "/register", "/css/**", "/js/**").permitAll()
+                        .requestMatchers("/h2-console/**", "/login", "/register", "/css/**", "/js/**", "/img/**").permitAll()
+
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )

@@ -1,22 +1,26 @@
 package drimer.drimain.controller;
 
-import drimer.drimain.model.*;
-import drimer.drimain.repository.*;
+import drimer.drimain.model.Dzial;
+import drimer.drimain.model.Maszyna;
+import drimer.drimain.model.Osoba;
+import drimer.drimain.repository.DzialRepository;
+import drimer.drimain.repository.MaszynaRepository;
+import drimer.drimain.repository.OsobaRepository;
+import drimer.drimain.repository.UserRepository;
+import drimer.drimain.model.User;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/admin")
+@Secured("ROLE_ADMIN")
 public class AdminController {
 
     @Autowired
@@ -29,72 +33,91 @@ public class AdminController {
     private DzialRepository dzialRepository;
 
     @Autowired
-    private RaportRepository raportRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    private ZgloszenieRepository zgloszenieRepository;
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder; // Wstrzyknij enkoder
-    // Usunięto /login i /logout – nie potrzebne bez logowania
+    private BCryptPasswordEncoder passwordEncoder;
 
-    @GetMapping("/register")
-    public String registerForm(Model model) {
-        model.addAttribute("osoba", new Osoba());
-        return "register"; // Stwórz szablon Thymeleaf register.html
-    }
-
-    // Obsługa rejestracji (POST)
-    @PostMapping("/register")
-    public String register(@ModelAttribute Osoba osoba,
-                           @RequestParam String hasloPotwierdz) { // Dodatkowe pole na potwierdzenie hasła
-        if (!osoba.getHaslo().equals(hasloPotwierdz)) {
-            // Błąd: hasła nie pasują – dodaj obsługę błędów
-            return "register";
-        }
-        osoba.setHaslo(passwordEncoder.encode(osoba.getHaslo())); // Zahashuj
-        osobaRepository.save(osoba);
-        return "redirect:/admin"; // Przekieruj po sukcesie
-    }
-
-    @GetMapping("/admin")
-    public String adminPanel(Model model, HttpSession session) {
-        if (session.getAttribute("loggedInUser") == null) {
-            return "redirect:/login";
-        }
-
-        // Usunięto sprawdzanie sesji – zawsze dostępny
+    // Panel admina
+    @GetMapping("")
+    public String adminPanel(Model model) {
         model.addAttribute("maszyny", maszynaRepository.findAll());
         model.addAttribute("osoby", osobaRepository.findAll());
         model.addAttribute("dzialy", dzialRepository.findAll());
-        model.addAttribute("isLoggedIn", true); // Domyślnie true, jeśli potrzebne w template
+        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("newUser", new User());
+        model.addAttribute("newMaszyna", new Maszyna());
+        model.addAttribute("newOsoba", new Osoba());
         return "admin";
     }
 
-    @PostMapping("/admin/dodaj-maszyna")
-    public String dodajMaszyna(@RequestParam String nazwa, @RequestParam Long dzialId) {
-        // Usunięto sprawdzanie sesji – zawsze dostępny
-        Optional<Dzial> optionalDzial = dzialRepository.findById(dzialId);
-        if (!optionalDzial.isPresent()) {
-            throw new IllegalArgumentException("Department not found with ID: " + dzialId);
-        }
-        Dzial dzial = optionalDzial.get();
+    // Dodawanie działu
+    @PostMapping("/dodaj-dzial")
+    public String dodajDzial(@RequestParam String nazwa) {
+        Dzial dzial = new Dzial();
+        dzial.setNazwa(nazwa);
+        dzialRepository.save(dzial);
+        return "redirect:/admin";
+    }
 
+    // Usuwanie działu
+    @PostMapping("/delete-dzial")
+    public String deleteDzial(@RequestParam Long id) {
+        dzialRepository.deleteById(id);
+        return "redirect:/admin";
+    }
+
+    // Dodawanie maszyny
+    @PostMapping("/dodaj-maszyna")
+    public String dodajMaszyna(@RequestParam String nazwa, @RequestParam Long dzialId) {
+        Optional<Dzial> optionalDzial = dzialRepository.findById(dzialId);
+        if (optionalDzial.isEmpty()) {
+            // Możesz obsłużyć błąd np. przez atrybut modelu
+            return "redirect:/admin?error=dzialNotFound";
+        }
         Maszyna maszyna = new Maszyna();
         maszyna.setNazwa(nazwa);
-        maszyna.setDzial(dzial);
+        maszyna.setDzial(optionalDzial.get());
         maszynaRepository.save(maszyna);
         return "redirect:/admin";
     }
 
-    @PostMapping("/admin/dodaj-osoba")
+    // Usuwanie maszyny
+    @PostMapping("/delete-maszyna")
+    public String deleteMaszyna(@RequestParam Long id) {
+        maszynaRepository.deleteById(id);
+        return "redirect:/admin";
+    }
+
+    // Dodawanie osoby
+    @PostMapping("/dodaj-osoba")
     public String dodajOsoba(@RequestParam String imieNazwisko) {
-        // Usunięto sprawdzanie sesji
         Osoba osoba = new Osoba();
         osoba.setImieNazwisko(imieNazwisko);
         osobaRepository.save(osoba);
         return "redirect:/admin";
     }
 
+    // Usuwanie osoby
+    @PostMapping("/delete-osoba")
+    public String deleteOsoba(@RequestParam Long id) {
+        osobaRepository.deleteById(id);
+        return "redirect:/admin";
+    }
 
+    // Dodawanie użytkownika (User entity, nie Osoba)
+    @PostMapping("/add-user")
+    public String addUser(@ModelAttribute User newUser, @RequestParam String role) {
+        newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+        newUser.setRole(role);
+        userRepository.save(newUser);
+        return "redirect:/admin";
+    }
 
+    // Usuwanie użytkownika
+    @PostMapping("/delete-user")
+    public String deleteUser(@RequestParam Long id) {
+        userRepository.deleteById(id);
+        return "redirect:/admin";
+    }
 }
