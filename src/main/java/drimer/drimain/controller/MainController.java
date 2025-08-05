@@ -26,8 +26,9 @@ public class MainController {
         if (authentication != null && authentication.isAuthenticated()) {
             return "redirect:/dashboard";
         }
-        return "redirect:/login"; // Zmiana przekierowania dla niezalogowanych
-    }
+        return "redirect:/login";
 
+
+    }
 }
 
