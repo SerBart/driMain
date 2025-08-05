@@ -27,8 +27,6 @@ public class MainController {
             return "redirect:/dashboard";
         }
         return "redirect:/login";
-
-
     }
 }
 
